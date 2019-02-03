@@ -3,9 +3,6 @@
 # dependencies
 /node_modules
 
-# dependencies
-/config
-
 # testing
 /coverage
 
