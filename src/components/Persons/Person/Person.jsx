@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { Component } from "react";
 
-import css from './Person.css'; 
+import css from "./Person.css";
 
-const Person = (props) => {
-
+class Person extends Component {
+  render() {
     return (
-        <div className={css.person}>
-            <p onClick={props.onClick}>{props.name} Age: {props.age}</p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name} />
-        </div>
-    )
-} 
+      <div className={css.person}>
+        <p onClick={this.props.onClick}>
+          {this.props.name} Age: {this.props.age}
+        </p>
+        <p>{this.props.children}</p>
+        <input
+          type="text"
+          onChange={this.props.changed}
+          value={this.props.name}
+        />
+      </div>
+    );
+  }
+}
 
 export default Person;
