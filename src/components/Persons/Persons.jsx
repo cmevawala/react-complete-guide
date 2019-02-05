@@ -5,11 +5,28 @@ class Persons extends Component {
 
   constructor(props) {
     super(props);
-    console.log("Persons.js -- Inside Constructor()");
+    console.log("Persons.js -- Inside constructor()");
   }
 
   componentWillMount() {
-    console.log("Persons.js -- Inside componentWillMount");
+    console.log("Persons.js -- Inside componentWillMount()");
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("[UPDATE] Persons.js -- Inside componentWillReceiveProps()", nextProps);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[UPDATE] Persons.js -- Inside shouldComponentUpdate()", nextProps, this.props.persons);
+    return nextProps.persons !== this.props.persons;
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log("[UPDATE] Persons.js -- Inside componentWillUpdate()", nextProps, nextState);
+  }
+
+  componentDidUpdate() {
+    console.log("[UPDATE] Persons.js -- Inside componentDidUpdate()");
   }
 
   render() {
@@ -17,6 +34,7 @@ class Persons extends Component {
     return this.props.persons.map((person, index) => {
       return (
         <Person
+          index={index}
           key={person.id}
           name={person.name}
           age={person.age}

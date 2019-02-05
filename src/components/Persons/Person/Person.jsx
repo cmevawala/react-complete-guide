@@ -6,15 +6,15 @@ class Person extends Component {
 
   constructor(props) {
     super(props);
-    console.log("Person.js -- Inside Constructor()");
+    console.log("Person.js -- Inside constructor()", this.props.index);
   }
 
   componentWillMount() {
-    console.log("Person.js -- Inside componentWillMount()");
+    console.log("Person.js -- Inside componentWillMount()", this.props.index);
   }
 
   render() {
-    console.log("Person.js -- Inside render()");
+    console.log("Person.js -- Inside render()", this.props.index);
     return (
       <div className={css.person}>
         <p onClick={this.props.onClick}>
@@ -31,7 +31,7 @@ class Person extends Component {
   }
 
   componentDidMount() {
-    console.log("Person.js -- Inside componentDidMount()");
+    console.log("Person.js -- Inside componentDidMount()", this.props.index);
   }
 
 }
