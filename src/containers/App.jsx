@@ -5,14 +5,22 @@ import css from "./App.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 class App extends Component {
-  state = {
-    persons: [
-      { id: "1", name: "Manu1", age: 10 },
-      { id: "2", name: "Manu2", age: 11 },
-      { id: "3", name: "Manu3", age: 12 }
-    ],
-    showPersons: false
-  };
+  constructor(props) {
+    super(props);
+    console.log("App.js -- Inside Constructor");
+    this.state = {
+      persons: [
+        { id: "1", name: "Manu1", age: 10 },
+        { id: "2", name: "Manu2", age: 11 },
+        { id: "3", name: "Manu3", age: 12 }
+      ],
+      showPersons: false
+    };
+  }
+
+  componentWillMount() {
+    console.log("App.js -- Inside componentWillMount");
+  }
 
   switchNameHandler = newName => {
     // console.log("Was Clicked");
@@ -54,6 +62,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("App.js -- Inside render()");
     let persons = null;
 
     if (this.state.showPersons) {
@@ -77,6 +86,10 @@ class App extends Component {
         {persons}
       </div>
     );
+  }
+
+  componentDidMount() {
+    console.log("App.js -- Inside componentDidMount()");
   }
 }
 
