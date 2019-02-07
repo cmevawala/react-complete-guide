@@ -17,6 +17,12 @@ class App extends Component {
       showPersons: false
     };
   }
+  
+  // Introduced 16.3
+  static getDerivedStateFromProps(props, state) {
+    console.log("App.js -- Inside getDerivedStateFromProps()", props);
+    return state;
+  }
 
   componentWillMount() {
     console.log("App.js -- Inside componentWillMount()");

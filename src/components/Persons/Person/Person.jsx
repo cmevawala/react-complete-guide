@@ -9,12 +9,14 @@ class Person extends Component {
     console.log("Person.js -- Inside constructor()", this.props.index);
   }
 
+  // Create
   componentWillMount() {
     console.log("Person.js -- Inside componentWillMount()", this.props.index);
   }
 
   render() {
     console.log("Person.js -- Inside render()", this.props.index);
+
     return (
       <div className={css.person}>
         <p onClick={this.props.onClick}>
