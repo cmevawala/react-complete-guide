@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import css from "./Cockpit.css";
 
@@ -17,6 +17,16 @@ const Cockpit = props => {
   if (props.persons.length <= 1) {
     classes.push(css.bold);
   }
+
+  // useEffect(() => {
+  //   console.log("Cockpit.js");
+  //   alert("Hello");
+  // }, [props.persons]);
+
+  useEffect(() => {
+    console.log("Cockpit.js");
+    alert("Hello");
+  }, []);
 
   return (
     <div className={css.Cockpit}>

@@ -66,6 +66,10 @@ class Persons extends Component {
   componentDidMount() {
     console.log("Persons.js -- Inside componentDidMount()");
   }
+
+  componentWillUnmount() {
+    console.log("Persons.js -- Inside componentWillUnmount()");
+  }
 }
 
 export default Persons;
