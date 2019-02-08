@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Aux from '../../../hoc/Auxilary.jsx';
 
 import css from "./Person.css";
 
@@ -18,7 +19,8 @@ class Person extends Component {
     console.log("Person.js -- Inside render()", this.props.index);
 
     return (
-      <div className={css.person}>
+      // <div className={css.person}>
+      <Aux>
         <p onClick={this.props.onClick}>
           {this.props.name} Age: {this.props.age}
         </p>
@@ -28,7 +30,8 @@ class Person extends Component {
           onChange={this.props.changed}
           value={this.props.name}
         />
-      </div>
+      </Aux>
+      // </div>
     );
   }
 
