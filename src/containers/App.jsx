@@ -4,6 +4,8 @@ import css from "./App.css";
 
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import WithClass from "../hoc/WithClass";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -95,7 +97,7 @@ class App extends Component {
     }
 
     return (
-      <div className={css.App}>
+      <WithClass classes={css.App}>
         <Cockpit
           persons={this.state.persons}
           showPerson={this.state.showPersons}
@@ -103,7 +105,7 @@ class App extends Component {
         />
 
         {persons}
-      </div>
+      </WithClass>
     );
   }
 
