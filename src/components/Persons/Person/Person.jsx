@@ -5,6 +5,8 @@ import Aux from "../../../hoc/Auxilary";
 import withClass from "../../../hoc/WithClass";
 
 import css from "./Person.module.css";
+import AuthContext from "../../../context/auth-context";
+
 class Person extends Component {
   constructor(props) {
     super(props);
@@ -23,22 +25,26 @@ class Person extends Component {
     return (
       // <div className={css.person}>
       <Aux>
-        { this.props.isAuthenticated ? <p> Authenticated </p> : <p> Login </p> }
-        <p onClick={this.props.onClick}>
-          {this.props.name} Age: {this.props.age}
-        </p>
-        <p>{this.props.children}</p>
-        <input
-          type="text"
-          // ref={(inputEl) => {this.inputElement = inputEl}}  .. Old method of using Ref
-          ref={this.inputElementRef}
-          onChange={this.props.changed}
-          value={this.props.name}
-        />
+          { this.context.isAuthenticated ?  <p> Authenticated </p> : <p> Login </p> }
+
+          <p onClick={this.props.onClick}>
+            {this.props.name} Age: {this.props.age}
+          </p>
+          <p>{this.props.children}</p>
+          <input
+            type="text"
+            // ref={(inputEl) => {this.inputElement = inputEl}}  .. Old method of using Ref
+            ref={this.inputElementRef}
+            onChange={this.props.changed}
+            value={this.props.name}
+          />
+        
       </Aux>
       // </div>
     );
   }
+
+  static contextType = AuthContext;
 
   componentDidMount() {
     console.log("Person.js -- Inside componentDidMount()", this.props.index);
@@ -48,6 +54,7 @@ class Person extends Component {
 
     this.inputElementRef.current.focus();
 
+    console.log(this.context);
   }
 }
 

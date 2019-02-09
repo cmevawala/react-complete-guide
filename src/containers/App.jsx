@@ -132,14 +132,15 @@ class App extends Component {
       // <WithClass classes={css.App}>
 
       <Aux>
-          <Cockpit
-            persons={this.state.persons}
-            showPerson={this.state.showPersons}
-            clicked={this.togglePersonsHandler}
-            login={this.loginHandler}
-          />
+          <AuthContext.Provider value={{isAuthenticated: this.state.isAuthenticated, login: this.loginHandler}}>
+            <Cockpit
+              persons={this.state.persons}
+              showPerson={this.state.showPersons}
+              clicked={this.togglePersonsHandler}
+            />
 
-          {persons}
+            {persons}
+          </AuthContext.Provider>
       </Aux>
 
       // </WithClass>
