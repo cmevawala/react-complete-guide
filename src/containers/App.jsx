@@ -17,7 +17,8 @@ class App extends Component {
         { id: "2", name: "Manu2", age: 11 },
         { id: "3", name: "Manu3", age: 12 }
       ],
-      showPersons: false
+      showPersons: false,
+      changeCounter: 0
     };
   }
 
@@ -73,7 +74,15 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({ persons: persons });
+    // this.setState({ persons: persons, changeCounter: this.state.changeCounter + 1 });
+
+    // Correct way to update the state as it is async
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1
+      };
+    });
   };
 
   togglePersonsHandler = () => {
