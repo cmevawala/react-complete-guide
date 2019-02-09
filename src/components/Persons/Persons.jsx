@@ -27,7 +27,7 @@ class Persons extends Component {
   // Update
   shouldComponentUpdate(nextProps, nextState) {
     console.log("[UPDATE] Persons.js -- Inside shouldComponentUpdate()", nextProps, this.props.persons);
-    return nextProps.persons !== this.props.persons;
+    return nextProps.persons !== this.props.persons || nextProps.isAuthenticated !== this.props.isAuthenticated;
   }
 
   // Update
@@ -58,6 +58,7 @@ class Persons extends Component {
           age={person.age}
           onClick={() => this.props.clicked(index)}
           changed={event => this.props.changed(event, person.id)}
+          isAuthenticated={this.props.isAuthenticated}
         />
       );
     });

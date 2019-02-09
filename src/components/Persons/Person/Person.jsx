@@ -23,6 +23,7 @@ class Person extends Component {
     return (
       // <div className={css.person}>
       <Aux>
+        { this.props.isAuthenticated ? <p> Authenticated </p> : <p> Login </p> }
         <p onClick={this.props.onClick}>
           {this.props.name} Age: {this.props.age}
         </p>
@@ -54,7 +55,8 @@ Person.propTypes = {
   click: PropTypes.func,
   name: PropTypes.string,
   age: PropTypes.number,
-  changed: PropTypes.func
+  changed: PropTypes.func,
+  isAuthenticated: PropTypes.bool
 };
 
 export default withClass(Person, css.person);

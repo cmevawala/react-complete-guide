@@ -4,9 +4,12 @@ import css from "./App.module.css";
 
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+
 // import WithClass from "../hoc/WithClass";
 import withClass from "../hoc/WithClass";
 import Aux from "../hoc/Auxilary";
+import AuthContext from "../context/auth-context";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +21,7 @@ class App extends Component {
         { id: "3", name: "Manu3", age: 12 }
       ],
       showPersons: false,
+      isAuthenticated: false,
       changeCounter: 0
     };
   }
@@ -100,6 +104,14 @@ class App extends Component {
     });
   };
 
+  loginHandler = () => {
+    this.setState({
+      isAuthenticated: true
+    });
+
+    console.log(this.state.isAuthenticated);
+  };
+
   render() {
     console.log("App.js -- Inside render()");
     let persons = null;
@@ -110,6 +122,7 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangeHandler}
+          isAuthenticated={this.state.isAuthenticated}
         />
       );
     }
@@ -119,13 +132,14 @@ class App extends Component {
       // <WithClass classes={css.App}>
 
       <Aux>
-        <Cockpit
-          persons={this.state.persons}
-          showPerson={this.state.showPersons}
-          clicked={this.togglePersonsHandler}
-        />
+          <Cockpit
+            persons={this.state.persons}
+            showPerson={this.state.showPersons}
+            clicked={this.togglePersonsHandler}
+            login={this.loginHandler}
+          />
 
-        {persons}
+          {persons}
       </Aux>
 
       // </WithClass>
