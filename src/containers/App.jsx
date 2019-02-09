@@ -4,8 +4,9 @@ import css from "./App.css";
 
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
-import WithClass from "../hoc/WithClass";
-
+// import WithClass from "../hoc/WithClass";
+import withClass from "../hoc/WithClass";
+import Aux from "../hoc/Auxilary";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +20,7 @@ class App extends Component {
       showPersons: false
     };
   }
-  
+
   // Introduced 16.3
   static getDerivedStateFromProps(props, state) {
     console.log("App.js -- Inside getDerivedStateFromProps()", props);
@@ -31,12 +32,20 @@ class App extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("[UPDATE] App.js -- Inside shouldComponentUpdate()", nextProps, this.props.persons);
+    console.log(
+      "[UPDATE] App.js -- Inside shouldComponentUpdate()",
+      nextProps,
+      this.props.persons
+    );
     return true;
   }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log("[UPDATE] App.js -- Inside componentWillUpdate()", nextProps, nextState);
+    console.log(
+      "[UPDATE] App.js -- Inside componentWillUpdate()",
+      nextProps,
+      nextState
+    );
   }
 
   componentDidUpdate() {
@@ -97,7 +106,10 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes={css.App}>
+      // HOC : Method 1
+      // <WithClass classes={css.App}>
+
+      <Aux>
         <Cockpit
           persons={this.state.persons}
           showPerson={this.state.showPersons}
@@ -105,7 +117,9 @@ class App extends Component {
         />
 
         {persons}
-      </WithClass>
+      </Aux>
+
+      // </WithClass>
     );
   }
 
@@ -114,4 +128,5 @@ class App extends Component {
   }
 }
 
-export default App;
+// HOC : Method 2
+export default withClass(App, css.App);

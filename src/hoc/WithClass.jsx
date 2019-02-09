@@ -1,11 +1,21 @@
-import React from 'react';
+import React from "react";
 
-const withClass = (props) => {
-    return (  
-        <div className={props.classes}>
-            {props.children}
-        </div>
-    );
-}
- 
+// HOC : First Method
+// const withClass = (props) => {
+//     return (
+//         <div className={props.classes}>
+//             {props.children}
+//         </div>
+//     );
+// }
+
+// HOC : Second Method
+const withClass = (WrappedComponent, className) => {
+  return () => (
+    <div className={className}>
+      <WrappedComponent />
+    </div>
+  );
+};
+
 export default withClass;
