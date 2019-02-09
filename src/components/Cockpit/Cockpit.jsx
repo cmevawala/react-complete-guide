@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 import css from "./Cockpit.module.css";
 
@@ -23,16 +23,21 @@ const Cockpit = props => {
   //   alert("Hello");
   // }, [props.persons]);
 
+  let toggleBtnRef = useRef(null);
+
   useEffect(() => {
     console.log("Cockpit.js");
-    alert("Hello");
+    // alert("Hello");
+    
+    toggleBtnRef.current.click();
+
   }, []);
 
   return (
     <div className={css.Cockpit}>
       <h1>Hi, I am React App</h1>
       <p className={classes.join(" ")}>This is really working</p>
-      <button className={btnClass} onClick={props.clicked}>
+      <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
     </div>
