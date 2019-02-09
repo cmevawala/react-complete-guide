@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Aux from "../../../hoc/Auxilary.jsx";
+import Aux from "../../../hoc/Auxilary";
+import withClass from "../../../hoc/WithClass";
 
-import css from "./Person.css";
+import css from "./Person.module.css";
 class Person extends Component {
   constructor(props) {
     super(props);
@@ -38,4 +39,4 @@ class Person extends Component {
   }
 }
 
-export default Person;
+export default withClass(Person, css.person);

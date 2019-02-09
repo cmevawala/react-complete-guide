@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import css from "./Cockpit.css";
+import css from "./Cockpit.module.css";
 
 const Cockpit = props => {
   let btnClass = "";

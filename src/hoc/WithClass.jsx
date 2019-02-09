@@ -11,9 +11,9 @@ import React from "react";
 
 // HOC : Second Method
 const withClass = (WrappedComponent, className) => {
-  return () => (
+  return (props) => (
     <div className={className}>
-      <WrappedComponent />
+      <WrappedComponent {...props} />
     </div>
   );
 };
